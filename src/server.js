@@ -13,6 +13,7 @@ const GLOBAL_SESSION = {
 
 // load static
 app.use(express.static('static'));
+app.use('/bs',express.static('node_modules/bootstrap/dist/'));
 // load HBS
 app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
