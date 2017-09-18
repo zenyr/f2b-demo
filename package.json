@@ -1,0 +1,10 @@
+{
+  "name": "f2b-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Zenyr <zenyr@zenyr.com>",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "license": "MIT"
+}
