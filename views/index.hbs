@@ -1,9 +1,35 @@
-<p>환영합니다.</p>
-
-<p>현재 시간: {{getTime}}</p>
-
-<p>부먹 대 찍먹</p>
-<p>{{votes.on}} vs {{votes.off}}</p>
-
-<a href="/vote/on">나는 부먹이 좋다</a>
-<a href="/vote/off">나는 찍먹이 좋다</a>
+<div class="jumbotron">
+  <h1>
+    <ruby>
+      {{votes.on}}
+      <rt>부먹</rt>
+    </ruby>
+    vs.
+    <ruby>
+      {{votes.off}}
+      <rt>찍먹</rt>
+    </ruby>
+  </h1>
+  <p class="lead">
+    부먹과 찍먹, 당신의 선택은?
+  </p>
+  <p><a class="btn btn-lg btn-success" href="#vote" role="button">투표하기</a></p>
+</div>
+<a name="vote"></a>
+<div class="row">
+  <div class="col-lg-4">
+    <h2>부먹파</h2>
+    <p>소스 남겨서 뭐할건데? 안 붓고 뭐해?</p>
+    <p><a class="btn btn-primary" href="/vote/on" role="button">+1</a></p>
+  </div>
+  <div class="col-lg-4">
+    <h2>찍먹파</h2>
+    <p>눅눅해지면 책임질래? 소스는 먹기 직전에 찍어야지!</p>
+    <p><a class="btn btn-primary" href="/vote/off" role="button">+1</a></p>
+  </div>
+  <div class="col-lg-4">
+    <h2>볶먹파</h2>
+    <p>놀고들 있네..</p>
+    <p><a class="btn btn-primary" href="/vote/both" role="button">+1</a></p>
+  </div>
+</div>

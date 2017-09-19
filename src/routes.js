@@ -11,6 +11,10 @@ module.exports = (app, GLOBAL_SESSION) => {
     if (side === 'on' || side === 'off') {
       GLOBAL_SESSION.votes[side]++;
     }
+    if (side === 'both') {
+      GLOBAL_SESSION.votes.on++;
+      GLOBAL_SESSION.votes.off++;
+    }
     res.redirect('/');
   });
 };
