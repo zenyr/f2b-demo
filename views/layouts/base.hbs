@@ -12,9 +12,28 @@
     <![endif]-->
   </head>
   <body>
-    {{{body}}}
+
+    <div class="container">
+      <div class="masthead">
+        <h3 class="text-muted">
+          Cat vs dog
+          <small>Current time is <span id="clock-me">{{getTime}}</span></small>
+        </h3>
+        <nav>
+          <ul class="nav nav-justified">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/fibo">Fibo</a></li>
+            <li><a href="/google">Google</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      {{{body}}}
+
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/bs/js/bootstrap.min.js"></script>
+    <script src="/common.js"></script>
   </body>
 </html>
