@@ -4,7 +4,15 @@ module.exports = (app, GLOBAL_SESSION) => {
     res.render('index', GLOBAL_SESSION);
   });
 
-  app.get('/detail', (req, res) => {});
+  app.get('/fibo', (req, res) => {
+    res.render('fibo', GLOBAL_SESSION);
+  });
+  app.get('/vote', (req, res) => {
+    res.render('vote', GLOBAL_SESSION);
+  });
+  app.get('/google', (req, res) => {
+    res.render('google', GLOBAL_SESSION);
+  });
 
   app.get('/vote/:side', (req, res) => {
     const { side } = req.params;
