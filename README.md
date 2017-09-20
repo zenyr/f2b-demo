@@ -1,5 +1,11 @@
 # F2B Demo repo
 
+## Live Demo
+
+https://f2b-demo-rlafpaxbme.now.sh
+
+* May take some time to wake hibernated instance
+
 ## Prerequisites
 
 - node@6
