@@ -1,20 +1,61 @@
 <div>
-  TODO: 비밀번호를 규칙에 맞게 입력해야 아래 입력란 활성화 스크립트
+  <p>
+    비밀번호를 조건에 맞게 입력하면 투표 버튼이 활성화됩니다:<br />길이 8자 이상, 소문자, 대문자,
+    특수문자(!@#$%^&amp;+=) 하나 이상씩 포함
+  </p>
+  <input class="form-control" id="password-me" type="password" placeholder="아무 비밀번호나 조건에 맞게 입력"/>
 </div>
+
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <h2>부먹파</h2>
     <p>소스 남겨서 뭐할건데? 안 붓고 뭐해?</p>
-    <p><a class="btn btn-primary" href="/vote/on" role="button">+1</a></p>
+    <p><a class="btn btn-primary protect-me" href="/vote/on" role="button">+1</a></p>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <h2>찍먹파</h2>
     <p>눅눅해지면 책임질래? 소스는 먹기 직전에 찍어야지!</p>
-    <p><a class="btn btn-primary" href="/vote/off" role="button">+1</a></p>
+    <p><a class="btn btn-primary protect-me" href="/vote/off" role="button">+1</a></p>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <h2>볶먹파</h2>
     <p>놀고들 있네..</p>
-    <p><a class="btn btn-primary" href="/vote/both" role="button">+1</a></p>
+    <p><a class="btn btn-primary protect-me" href="/vote/both" role="button">+1</a></p>
   </div>
 </div>
+<script type="text/deferscript">
+  // 비밀번호 감시, 버튼 활성화 통제 스크립트
+  var PasswordManager = function($el, $targets) {
+    this.$el = $el;
+    this.$targets = $targets;
+    this.result = false;
+
+    $targets.on('click', this.query.bind(this));
+    $el.on('input', this.update.bind(this));
+    this.update();
+  };
+  PasswordManager.prototype.update = function() {
+    var value = this.$el.val();
+    this.result = true;
+    if (
+      value.length < 8 ||
+      !/[a-z]/.test(value) ||
+      !/[A-Z]/.test(value) ||
+      !/\d/.test(value) ||
+      !/[!@#$%^&+=]/.test(value)
+    ) {
+      this.result = false;
+    }
+
+    this.$targets.toggleClass('disabled', !this.result);
+  };
+  PasswordManager.prototype.query = function(ev) {
+    if (!this.result) {
+      ev.preventDefault();
+      alert('비밀번호가 조건에 맞지 않습니다.'); // pointer-events 미지원 기기에서만 출력
+    }
+  };
+  
+  var passwordManager = new PasswordManager($('#password-me'), $('.protect-me'));
+
+</script>
