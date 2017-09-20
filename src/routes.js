@@ -34,6 +34,7 @@ module.exports = (app, GLOBAL_SESSION) => {
   });
 
   app.get('/vote/:side', (req, res) => {
+    // IDEA: receive password and verify once again
     const { side } = req.params;
     if (side === 'on' || side === 'off') {
       GLOBAL_SESSION.votes[side]++;
