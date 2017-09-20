@@ -1,3 +1,29 @@
-<div>
-  TODO: Fibonacci view
+<div class="row">
+  <div class="col-md-4">
+    <h2>피보나치 수열 계산기</h2>
+    <p>원하시는 값을 입력해주세요.</p>
+    <form class="form-inline" id="fibo-me">
+      <div class="form-group">
+        <input type="number" class="form-control" placeholder="1-1000"/>
+      </div>
+      <button type="submit" class="btn btn-primary">조회</button>
+    </form>
+    <p>결과는 <code id="fibo-result">-</code>입니다.</p>
+  </div>
 </div>
+<script type="text/deferscript">
+$('#fibo-me').on('submit', function(ev) {
+  ev.preventDefault();
+  var number =
+    parseInt(
+      $(this)
+        .find('input')
+        .val(),
+      10
+    ) || 1;
+  $.get('/fibo/get/' + number).then(function(result) {
+    $('#fibo-result').text(result);
+  });
+});
+
+</script>
